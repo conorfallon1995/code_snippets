@@ -36,8 +36,8 @@ kind: Job
             command: [
                 "python", "{script_name}",]
             args: [
-                "{name}",
-                "{os.path.splitext(name)[0]}_clean.txt"]
+                "--{name}",
+                "--{os.path.splitext(name)[0]}_clean.txt"]
             volumeMounts:
             - mountPath: "/pvc/output/soup"
                 name: pvc-output-soup
@@ -45,8 +45,6 @@ kind: Job
                 limits:
                 cpu: 1
         memory: 1Gi
-        nodeSelector:
-            gpu: p100
         volumes:
             - name: pvc-output
             persistentVolumeClaim:
